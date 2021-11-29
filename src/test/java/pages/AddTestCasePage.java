@@ -8,12 +8,12 @@ import org.testng.Assert;
 import wrappers.Dropdown;
 import wrappers.Input;
 
-public class AddTestCasePage extends BasePage{
+public class AddTestCasePage extends BasePage {
     public AddTestCasePage(WebDriver driver) {
         super(driver);
     }
 
-    public void getCaseInfo(CaseInfo caseInfo) {
+    public void fillInDetails(CaseInfo caseInfo) {
         new Input(driver, "Title").writeInFields(caseInfo.getTitle());
         new Dropdown(driver, "Section").selectOption(caseInfo.getSection());
         new Dropdown(driver, "Template").selectOption(caseInfo.getTemplate());
@@ -30,10 +30,11 @@ public class AddTestCasePage extends BasePage{
 
     public void addNewCase() {
         driver.findElement(By.id("accept")).click();
-        try{
+        try {
             driver.findElement(By.xpath("//*[contains(@class, 'message-success)]" +
                     "[contains(text(), 'Successfully added the new test case. ')]")).isDisplayed();
-        }catch (Exception exception) {
+        } catch (Exception exception) {
+            exception.printStackTrace();
             Assert.fail("Message wasn't appeared");
         }
     }

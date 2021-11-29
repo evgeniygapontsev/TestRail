@@ -15,6 +15,7 @@ public class AddProjectPage extends BasePage{
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-dashboard")));
         } catch (Exception exception) {
+            exception.printStackTrace();
             Assert.fail("Page to add new project was not opened");
         }
     }

@@ -20,7 +20,7 @@ public class TestCaseTest extends BaseTest{
         dashboardPage.openProject("Project #1");
         projectPage.addTestCase();
         CaseInfo caseInfo = CaseInfoFactory.get();
-        addTestCasePage.getCaseInfo(caseInfo);
+        addTestCasePage.fillInDetails(caseInfo);
         addTestCasePage.addNewCase();
     }
 }

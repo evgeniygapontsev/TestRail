@@ -17,6 +17,7 @@ public class DashboardPage extends BasePage{
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-dashboard")));
         } catch (Exception exception) {
+            exception.printStackTrace();
             Assert.fail("DashboardPage was not opened");
         }
         return true;
