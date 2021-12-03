@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class ProjectPage extends BasePage {
 
@@ -9,40 +11,33 @@ public class ProjectPage extends BasePage {
         super(driver);
     }
 
-    public void addMilestones() {
-        driver.findElement(By.id("sidebar-milestones-add")).click();
+    public boolean isPageOpened() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-project")));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Assert.fail("ProjectPage wasn't opened");
+        }
+        return true;
     }
 
-    public void addTestRun() {
-        driver.findElement(By.id("sidebar-runs-add")).click();
+    public void editButton() {
+        driver.findElement(By.xpath("//*[contains(@class, 'button-edit')]")).click();
     }
+
+    public String confirmUpdate() {
+        return driver.findElement(By.xpath("//*[contains(@class, 'message message-success')]")).getText();
+    }
+
 
     public void addTestCase() {
         driver.findElement(By.id("sidebar-cases-add")).click();
     }
 
-    public void overview() {
-        driver.findElement(By.id("navigation-projects")).click();
-    }
-
-    public void toDo() {
-        driver.findElement(By.id("navigation-todos")).click();
-    }
-
-    public void milestones() {
-        driver.findElement(By.id("navigation-milestones")).click();
-    }
-
-    public void testRunsAndResults() {
-        driver.findElement(By.id("navigation-runs")).click();
-    }
 
     public void testCases() {
         driver.findElement(By.id("navigation-suites")).click();
     }
 
-    public void reports() {
-        driver.findElement(By.id("navigation-reports")).click();
-    }
 
 }

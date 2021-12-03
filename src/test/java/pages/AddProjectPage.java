@@ -11,13 +11,14 @@ public class AddProjectPage extends BasePage{
         super(driver);
     }
 
-    public void isPageOpened() {
+    public boolean isPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-dashboard")));
         } catch (Exception exception) {
             exception.printStackTrace();
             Assert.fail("Page to add new project was not opened");
         }
+        return true;
     }
 
     public void createNewProject(String name, String announcement) {
@@ -25,5 +26,12 @@ public class AddProjectPage extends BasePage{
         driver.findElement(By.id("announcement")).sendKeys(announcement);
         driver.findElement(By.id("show_announcement")).click();
         driver.findElement(By.id("accept")).click();
+    }
+
+    public void updateInfoOfProject(String newName) {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(newName);
+        driver.findElement(By.id("accept")).click();
+
     }
 }

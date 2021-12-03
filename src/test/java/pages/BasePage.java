@@ -2,9 +2,10 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.PropertyReader;
 
 public class BasePage {
-    public static final String baseURL = "https://evgeniygapontsev.testrail.io/index.php";
+    public static final String baseURL = System.getenv().getOrDefault("TESTRAIL_URL", PropertyReader.getProperty("testrail.url"));
     WebDriver driver;
     WebDriverWait wait;
 

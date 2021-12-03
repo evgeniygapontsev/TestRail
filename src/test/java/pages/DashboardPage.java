@@ -1,9 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -23,6 +21,10 @@ public class DashboardPage extends BasePage{
         return true;
     }
 
+    public void openAdminPage() {
+        driver.findElement(By.id("navigation-admin")).click();
+    }
+
     public void addFirstProject() {
         driver.findElement(By.id("navigation-empty-addproject")).click();
     }
@@ -36,11 +38,9 @@ public class DashboardPage extends BasePage{
     }
 
     public void openProject(String projectName) {
-//        WebElement project = driver.findElement(By.id(""));
-//        project.getText().contains(projectName);
-//        project.click();
+
         driver.findElement(By.xpath(String.format(
-                "//div[contains(@class, 'summary-title text-ppp')]//descendant::a[contains(text(), '%s')]", projectName))).click();
-//        driver.findElement(By.xpath("//*[@id='content_container']/..//*[contains(text(), 'Project #1']")).click();
+                "//div[contains(@class, 'summary-title text-ppp')]//descendant::a[contains(text(), '%s')]",
+                projectName))).click();
     }
 }

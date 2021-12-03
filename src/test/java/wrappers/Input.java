@@ -17,4 +17,9 @@ public class Input {
         driver.findElement(By.xpath(String.format(
                 "//*[contains(text(),'%s')]/../input[contains(@class,'form-fields')]", label))).sendKeys(text);
     }
+
+    public void writeNextFields(String text) {
+        driver.findElement(By.xpath(String.format(
+                "//*[contains(text(), '')]//*[contains(@class, 'form-control-full field-editor')]", label))).sendKeys(text);
+    }
 }
