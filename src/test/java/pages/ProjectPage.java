@@ -1,10 +1,12 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+@Log4j2
 public class ProjectPage extends BasePage {
 
     public ProjectPage(WebDriver driver) {
@@ -17,6 +19,7 @@ public class ProjectPage extends BasePage {
         } catch (Exception exception) {
             exception.printStackTrace();
             Assert.fail("ProjectPage wasn't opened");
+            log.error(exception.getMessage());
         }
         return true;
     }

@@ -14,7 +14,7 @@ import static org.testng.Assert.assertTrue;
 
 public class TestCaseTest extends BaseTest{
 
-    @Test
+    @Test(description = "Create and delete test cases of the project")
     public void createTestCase() {
 
         loginPage.openLoginPage();

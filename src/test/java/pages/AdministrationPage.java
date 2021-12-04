@@ -1,12 +1,13 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import java.util.List;
 
+@Log4j2
 public class AdministrationPage extends BasePage {
 
     public AdministrationPage(WebDriver driver) {
@@ -30,7 +31,6 @@ public class AdministrationPage extends BasePage {
                 "//*[contains(@class,'ui-dialog-content')]//*[@name='deleteCheckbox']")).click();
         driver.findElement(By.xpath(
                 "//*[contains(@class,'ui-dialog-content')]//*[contains(@class,'button-ok')]")).click();
-        Assert.assertEquals("Successfully deleted the project.", "Successfully deleted the project.");
     }
 
     public String projectWasDeleted() {

@@ -7,7 +7,7 @@ import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Login in website")
     public void login() {
         boolean isOpened = loginPage
                 .openLoginPage()

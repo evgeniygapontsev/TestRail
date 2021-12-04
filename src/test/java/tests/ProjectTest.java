@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ProjectTest extends BaseTest {
 
-    @Test
+    @Test(description = "Create the project")
     public void createProject() {
 
         loginPage.openLoginPage();
@@ -24,7 +24,7 @@ public class ProjectTest extends BaseTest {
         assertTrue(administrationPage.projectWasCreated("Demo Project"), "Project wasn't created");
     }
 
-    @Test
+    @Test(description = "Update the project")
     public void updateProject() {
         loginPage.openLoginPage();
         loginPage.login(userName, password);
