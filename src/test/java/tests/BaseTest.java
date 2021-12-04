@@ -48,8 +48,10 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         context.setAttribute("driver", driver);
-        userName = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
-        password = System.getenv().getOrDefault("TESTRAIL_PASS", PropertyReader.getProperty("testrail.pass"));
+//        userName = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
+//        password = System.getenv().getOrDefault("TESTRAIL_PASS", PropertyReader.getProperty("testrail.pass"));
+        userName = "gapontsev_testrail@mailinator.com";
+        password = "wdNMO3SgU6GSJ6XKkB/2";
         loginPage = new LoginPage(driver);
         dashboardPage =  new DashboardPage(driver);
         addProjectPage = new AddProjectPage(driver);
