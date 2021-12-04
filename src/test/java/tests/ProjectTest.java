@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 public class ProjectTest extends BaseTest {
 
     @Test(description = "Create the project")
-    public void createProject() {
+    public void projectCreate() {
 
         loginPage.openLoginPage();
         loginPage.login(userName, password);
@@ -25,7 +25,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test(description = "Update the project")
-    public void updateProject() {
+    public void projectUpdate() {
         loginPage.openLoginPage();
         loginPage.login(userName, password);
         dashboardPage.isDashboardPageOpened();

@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 public class WholeDeletingTest extends BaseTest {
 
     @Test(description = "Delete the whole project")
-    public void deleteProject() {
+    public void wholeDelete() {
         loginPage.openLoginPage();
         loginPage.login(userName, password);
         dashboardPage.isDashboardPageOpened();
