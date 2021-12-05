@@ -28,6 +28,7 @@ public class BaseTest {
     AdministrationPage administrationPage;
     TestCasePage testCasePage;
     AllCasesPage allCasesPage;
+    TestRunsPage testRunsPage;
 
     @BeforeMethod
     public void setup(@Optional ITestContext context) {
@@ -60,6 +61,7 @@ public class BaseTest {
         administrationPage = new AdministrationPage(driver);
         testCasePage = new TestCasePage(driver);
         allCasesPage = new AllCasesPage(driver);
+        testRunsPage = new TestRunsPage(driver);
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")

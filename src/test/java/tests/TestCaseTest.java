@@ -19,7 +19,13 @@ public class TestCaseTest extends BaseTest{
         loginPage.login(userName, password);
         dashboardPage.isDashboardPageOpened();
         assertTrue(dashboardPage.isDashboardPageOpened(), "DashboardPage was not opened");
-        dashboardPage.openProject("Project #1");
+        dashboardPage.addAnotherProject();
+        addProjectPage.isPageOpened();
+        assertTrue(addProjectPage.isPageOpened(), "Page to add new project was not opened");
+        addProjectPage.createNewProject("Project WTC", "This is a new project");
+        assertTrue(administrationPage.projectWasCreated("Project WTC"), "Project wasn't created");
+        administrationPage.goToDashboard();
+        dashboardPage.openProject("Project WTC");
         projectPage.isPageOpened();
         assertTrue(projectPage.isPageOpened(), "ProjectPage wasn't opened");
         projectPage.addTestCase();
@@ -43,5 +49,6 @@ public class TestCaseTest extends BaseTest{
         wait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(@class, 'text-secondary section-count')]"), "0"));
         String messageDel = allCasesPage.wasCasesDeleted();
         assertEquals(messageDel, "0");
+
     }
 }
