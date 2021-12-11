@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class AddProjectPage extends BasePage{
         super(driver);
     }
 
+    @Step("Check that page was opened")
     public boolean isPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-dashboard")));
@@ -24,14 +26,18 @@ public class AddProjectPage extends BasePage{
         return true;
     }
 
+    @Step("Create a new project with {name} and {announcement}")
     public void createNewProject(String name, String announcement) {
+        log.info("Fill info of project '{}', '{}'", name, announcement);
         driver.findElement(By.id("name")).sendKeys(name);
         driver.findElement(By.id("announcement")).sendKeys(announcement);
         driver.findElement(By.id("show_announcement")).click();
         driver.findElement(By.id("accept")).click();
     }
 
+    @Step("Update project with {newName}")
     public void updateInfoOfProject(String newName) {
+        log.info("Rename project with new name '{}'", newName);
         driver.findElement(By.id("name")).clear();
         driver.findElement(By.id("name")).sendKeys(newName);
         driver.findElement(By.id("accept")).click();

@@ -1,5 +1,6 @@
 package tests;
 
+import adapters.ProjectAdapter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import pages.*;
-import utils.PropertyReader;
 import utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
@@ -29,6 +29,7 @@ public class BaseTest {
     TestCasePage testCasePage;
     AllCasesPage allCasesPage;
     TestRunsPage testRunsPage;
+    ProjectAdapter projectAdapter;
 
     @BeforeMethod
     public void setup(@Optional ITestContext context) {
@@ -62,6 +63,7 @@ public class BaseTest {
         testCasePage = new TestCasePage(driver);
         allCasesPage = new AllCasesPage(driver);
         testRunsPage = new TestRunsPage(driver);
+        projectAdapter = new ProjectAdapter();
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")
