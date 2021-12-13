@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class TestRunsPage extends BasePage{
         super(driver);
     }
 
+    @Step("Check that the Page was opened")
     public boolean isTestRunsPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'content-header-title page_title')]")));
@@ -24,7 +26,9 @@ public class TestRunsPage extends BasePage{
         return true;
     }
 
+    @Step("Create a new Test plan")
     public void addTestPlan() {
+        log.info("Create a new Test plan with some name and description");
         driver.findElement(By.id("navigation-plans-add")).click();
         driver.findElement(By.id("name")).sendKeys("Demo Test Plan");
         driver.findElement(By.id("description_display")).sendKeys("Check out new added fitches");

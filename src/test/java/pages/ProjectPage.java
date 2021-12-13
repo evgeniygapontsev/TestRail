@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class ProjectPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check that Page was opened")
     public boolean isPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navigation-project")));
@@ -31,6 +33,7 @@ public class ProjectPage extends BasePage {
         driver.findElement(By.xpath("//*[contains(@class, 'button-edit')]")).click();
     }
 
+    @Step("Confirm that project was updated")
     public String confirmUpdate() {
         return driver.findElement(By.xpath("//*[contains(@class, 'message message-success')]")).getText();
     }
@@ -51,7 +54,9 @@ public class ProjectPage extends BasePage {
         driver.findElement(By.id("navigation-projects")).click();
     }
 
+    @Step("Check that Test plan with {testPlanName} is exist")
     public boolean testPlanExist(String testPlanName) {
+        log.info("Test plan with name '{}' was created", testPlanName);
         List<WebElement> listOfPlans = driver.findElements(By.xpath("//*[contains(@class, 'grid')]//a[contains(text(),'')]"));
         boolean isTestPlanCreated = false;
         for (WebElement project : listOfPlans) {

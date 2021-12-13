@@ -1,5 +1,6 @@
 package tests;
 
+import adapters.ProjectAdapter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,6 +30,7 @@ public class BaseTest {
     TestCasePage testCasePage;
     AllCasesPage allCasesPage;
     TestRunsPage testRunsPage;
+    ProjectAdapter projectAdapter;
 
     @BeforeMethod
     public void setup(@Optional ITestContext context) {
@@ -49,10 +51,8 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         context.setAttribute("driver", driver);
-//        userName = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
-//        password = System.getenv().getOrDefault("TESTRAIL_PASS", PropertyReader.getProperty("testrail.pass"));
-        userName = "gapontsev_testrail@mailinator.com";
-        password = "wdNMO3SgU6GSJ6XKkB/2";
+        userName = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
+        password = System.getenv().getOrDefault("TESTRAIL_PASS", PropertyReader.getProperty("testrail.pass"));
         loginPage = new LoginPage(driver);
         dashboardPage =  new DashboardPage(driver);
         addProjectPage = new AddProjectPage(driver);
@@ -62,6 +62,7 @@ public class BaseTest {
         testCasePage = new TestCasePage(driver);
         allCasesPage = new AllCasesPage(driver);
         testRunsPage = new TestRunsPage(driver);
+        projectAdapter = new ProjectAdapter();
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")

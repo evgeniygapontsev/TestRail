@@ -5,10 +5,10 @@ import models.CaseInfoFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class TestCaseTest extends BaseTest{
 
@@ -35,7 +35,7 @@ public class TestCaseTest extends BaseTest{
         String confirm = testCasePage.caseCreated();
         assertEquals(confirm, "Successfully added the new test case. Add another");
         testCasePage.addAnotherCase();
-        CaseInfo caseInfoMore = CaseInfoFactory.getAgain();
+        CaseInfo caseInfoMore = CaseInfoFactory.get();
         addTestCasePage.fillInDetails(caseInfoMore);
         addTestCasePage.addNewCase();
         String confirmation = testCasePage.caseCreated();
@@ -50,5 +50,13 @@ public class TestCaseTest extends BaseTest{
         String messageDel = allCasesPage.wasCasesDeleted();
         assertEquals(messageDel, "0");
 
+    }
+
+    @AfterMethod
+    public void deleteProjectByApi() {
+        int actualId = projectAdapter.getProjectId("Project WTC");
+        projectAdapter.getProject(actualId);
+        projectAdapter.deleteProject(actualId);
+        assertFalse(projectAdapter.isProjectExist("Project WTC"), "Project wasn't deleted");
     }
 }
